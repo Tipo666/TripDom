@@ -21,12 +21,17 @@ public class DbConnection extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
 
+        db.execSQL(SqlHelperSchema.USUARIO_TABLE);
+        //TODO: Poner sentencias de la sentidades restantes
+
+        db.execSQL(SqlHelperSchema.PUBLICACION_TABLE);
+
+        db.execSQL(SqlHelperSchema.PUBLICACION_DETALLE_TABLE);
+
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
-
-    public DbConnection
 }

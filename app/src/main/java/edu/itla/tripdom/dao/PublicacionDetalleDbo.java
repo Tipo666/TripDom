@@ -1,14 +1,17 @@
 package edu.itla.tripdom.dao;
+
 import android.content.Context;
 
 /**
- * Created by Tipo666 on 11/26/2017.
+ * Created by Tipo666 on 11/27/2017.
  */
 
-public class PublicacionDbo {
+public class PublicacionDetalleDbo {
 
     private DbConnection connection;
-    public PublicacionDbo(Context context){
+    public PublicacionDetalleDbo(Context context){
+
         connection = new DbConnection(context);
     }
+
 }

@@ -1,16 +1,20 @@
 package edu.itla.tripdom.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by Tipo666 on 11/12/2017.
  */
 
-public class Usuario {
+public class Usuario implements Serializable{
 
     private int id;
     private String nombre;
     private TipoUsuario tipoUsuario;
     private String email;
     private String telefono;
+
+
 
 
     public int getId() {

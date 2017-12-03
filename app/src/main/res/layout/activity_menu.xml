@@ -5,18 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="edu.itla.tripdom.MainActivity">
-
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Introduce un texto"/>
+    tools:context="edu.itla.tripdom.view.Menu">
 
     <Button
-        android:id="@+id/btnBoton1"
+        android:id="@+id/btnUsuarios"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Guardar" />
+        android:text="Usuarios"
+        android:layout_gravity="center"/>
+
+    <Button
+        android:id="@+id/btnPublicaciones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Publicaciones"
+        android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>
