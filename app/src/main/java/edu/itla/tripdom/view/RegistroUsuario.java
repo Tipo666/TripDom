@@ -8,8 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import java.util.List;
-
 import edu.itla.tripdom.R;
 import edu.itla.tripdom.Visualizar;
 import edu.itla.tripdom.dao.UsuarioDbo;
@@ -27,6 +25,8 @@ public class RegistroUsuario extends AppCompatActivity {
     private EditText editTextEmail;
     private EditText editTextTelefono;
 
+    private Usuario usuario;
+
     private UsuarioDbo usuarioDbo = new UsuarioDbo(this);
 
     @Override
@@ -34,11 +34,22 @@ public class RegistroUsuario extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_usuario);
 
+
         btnRegistro = findViewById(R.id.btnBotonRegistro);
         editTextNombre = findViewById(R.id.editTextNombre);
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextTelefono = findViewById(R.id.editTextTelefono);
         btnListar = findViewById(R.id.btnListar);
+
+        Bundle parametros = getIntent().getExtras();
+
+        if (parametros != null && parametros.containsKey("usuario")){
+            usuario = (Usuario) parametros.getSerializable("usuario");
+
+            editTextNombre.setText(usuario.getNombre());
+            editTextEmail.setText(usuario.getEmail());
+            editTextTelefono.setText(usuario.getTelefono());
+        }
 
         btnListar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,13 +72,16 @@ public class RegistroUsuario extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Usuario usuario = new Usuario();
+                if (usuario == null){
+                    usuario = new Usuario();
+                }
                 usuario.setNombre(editTextNombre.getText().toString());
                 usuario.setTipoUsuario(TipoUsuario.CLIENTE);
                 usuario.setEmail(editTextEmail.getText().toString());
                 usuario.setTelefono(editTextTelefono.getText().toString());
 
-                usuarioDbo.crear(usuario);
+                Log.i(LOG_T, "Registrando Usuario :" );
+                usuarioDbo.guardar(usuario);
 
                 //Log.i(LOG_T, usuario.toString());
 

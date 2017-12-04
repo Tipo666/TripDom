@@ -24,7 +24,7 @@ public class UsuarioDbo {
 
     public UsuarioDbo(Context context) { connection = new DbConnection(context);}
 
-    public void crear(Usuario usuario){
+    public boolean guardar(Usuario usuario){
 
         ContentValues cv = new ContentValues();
         cv.put("nombre", usuario.getNombre());
@@ -33,11 +33,16 @@ public class UsuarioDbo {
         cv.put("telefono", usuario.getTelefono());
 
         SQLiteDatabase db = connection.getWritableDatabase();
-        Long id = db.insert("usuario", null, cv);
 
-        usuario.setId(id.intValue());
+        if(usuario.getId() == 0){
+            Long id = db.insert("usuario", null, cv);
+            usuario.setId(id.intValue());
+        } else {
+            db.update("usuario", cv, "id = "+ usuario.getId(), null);
+        }
 
         db.close();
+        return true;
     }
 
     private void eliminar(Usuario usuario){
