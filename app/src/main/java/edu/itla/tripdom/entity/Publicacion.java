@@ -38,6 +38,30 @@ public class Publicacion {
         this.cupo = cupo;
     }
 
+    public void setFechaPublicacion(Date fechaPublicacion) {
+        this.fechaPublicacion = fechaPublicacion;
+    }
+
+    public void setFechaViaje(Date fechaViaje) {
+        this.fechaViaje = fechaViaje;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public int getId() {
+        return Id;
+    }
+
+    public Date getFechaPublicacion() {
+        return fechaPublicacion;
+    }
+
+    public Date getFechaViaje() {
+        return fechaViaje;
+    }
+
     // -Imagen (Temp)
       //  -Cupo (Del transporte)
 

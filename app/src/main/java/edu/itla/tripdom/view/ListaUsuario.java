@@ -8,10 +8,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.List;
 
 import edu.itla.tripdom.R;
+import edu.itla.tripdom.UsuarioActual;
 import edu.itla.tripdom.dao.UsuarioDbo;
 import edu.itla.tripdom.entity.Usuario;
 import edu.itla.tripdom.view.listadapter.UsuarioListAdapter;
@@ -25,8 +27,8 @@ public class ListaUsuario extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_usuario);
 
-        UsuarioDbo usuarioDbo = new UsuarioDbo(this);
-        List<Usuario> usuarios = usuarioDbo.buscar();
+        final UsuarioDbo usuarioDbo = new UsuarioDbo(this);
+        final List<Usuario> usuarios = usuarioDbo.buscar();
 
         Log.i(LOG_T, "Cantidad de usuario" + usuarios.size());
         ListView listView = findViewById(R.id.listaUsuario);
@@ -52,10 +54,12 @@ public class ListaUsuario extends AppCompatActivity {
         btnAgregar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ListaUsuario.this, RegistroUsuario.class));
+                Intent intent = new Intent(ListaUsuario.this, RegistroUsuario.class);
                 startActivity(intent);
             }
         });
+
+
 
 
     }

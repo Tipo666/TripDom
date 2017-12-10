@@ -60,7 +60,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnListar"
-        android:text="Update"
+        android:text="Listar"
         android:layout_gravity="center"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cambiar"
+        android:id="@+id/btnCambiar"/>
 
 </LinearLayout>

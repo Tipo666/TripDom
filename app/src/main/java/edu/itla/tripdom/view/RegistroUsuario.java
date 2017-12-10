@@ -7,8 +7,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import edu.itla.tripdom.R;
+import edu.itla.tripdom.UsuarioActual;
 import edu.itla.tripdom.Visualizar;
 import edu.itla.tripdom.dao.UsuarioDbo;
 import edu.itla.tripdom.entity.TipoUsuario;
@@ -55,7 +57,7 @@ public class RegistroUsuario extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent visualizar = new Intent(RegistroUsuario.this, Visualizar.class);
+                Intent visualizar = new Intent(RegistroUsuario.this, ListaUsuario.class);
                // visualizar.putExtra("Nombre", editText.getText().toString());
                 startActivity(visualizar);
 
@@ -85,6 +87,23 @@ public class RegistroUsuario extends AppCompatActivity {
 
                 //Log.i(LOG_T, usuario.toString());
 
+            }
+        });
+
+        Button btnCambiar = findViewById(R.id.btnCambiar);
+
+        btnCambiar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (usuario != null && usuario.getId()>0) {
+
+                    UsuarioActual.setUsuario(usuario);
+
+
+                }else{
+                    Toast.makeText(RegistroUsuario.this, "Usuario no permitido o no exsite", Toast.LENGTH_LONG);
+                }
             }
         });
 

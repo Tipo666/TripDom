@@ -34,7 +34,7 @@ public class UsuarioDbo {
 
         SQLiteDatabase db = connection.getWritableDatabase();
 
-        if(usuario.getId() == 0){
+        if(usuario.getId() <= 0){
             Long id = db.insert("usuario", null, cv);
             usuario.setId(id.intValue());
         } else {
