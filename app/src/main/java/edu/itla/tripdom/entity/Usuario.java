@@ -14,7 +14,13 @@ public class Usuario implements Serializable{
     private String email;
     private String telefono;
 
+    public static final String TABLE_NAME = "usuario";
 
+    public static final String ID = "id";
+    public static final String NOMBRE = "nombre";
+    public static final String TIPO_USUARIO = "tipo_usuario";
+    public static final String EMAIL = "email";
+    public static final String TELEFONO = "telefono";
 
 
     public int getId() {

@@ -1,5 +1,6 @@
 package edu.itla.tripdom.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
  * Created by Tipo666 on 11/12/2017.
  */
 
-public class Publicacion {
+public class Publicacion implements Serializable{
 
         private int  Id;
         private Date fechaPublicacion;
@@ -20,11 +21,11 @@ public class Publicacion {
         private String origen;
         private int cupo;
 
-        List<PublicacionDetalle> detalle;
+    List<PublicacionDetalle> detalle;
 
     public void setDetalle(List<PublicacionDetalle> detalle) {
         this.detalle = detalle;
-    }
+   }
 
     public Publicacion(int id, Date fechaPublicacion, Date fechaViaje, int costo, String descripcion, int estado, Usuario usuario, String origen, int cupo) {
         Id = id;
@@ -37,6 +38,8 @@ public class Publicacion {
         this.origen = origen;
         this.cupo = cupo;
     }
+
+    public Publicacion(){}
 
     public void setFechaPublicacion(Date fechaPublicacion) {
         this.fechaPublicacion = fechaPublicacion;

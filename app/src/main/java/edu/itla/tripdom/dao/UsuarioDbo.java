@@ -22,7 +22,9 @@ public class UsuarioDbo {
 
     private DbConnection connection;
 
-    public UsuarioDbo(Context context) { connection = new DbConnection(context);}
+    public UsuarioDbo(Context context) {
+        connection = new DbConnection(context);
+    }
 
     public boolean guardar(Usuario usuario){
 
@@ -45,10 +47,6 @@ public class UsuarioDbo {
         return true;
     }
 
-    private void eliminar(Usuario usuario){
-        ContentValues cv = new ContentValues();
-        cv.clear();
-    }
 
     public List<Usuario> buscar(){
 
@@ -65,9 +63,11 @@ public class UsuarioDbo {
         Cursor cursor = db.query("usuario", columnas, null, null, null, null, null);
 
         cursor.moveToFirst();
+
         while (!cursor.isAfterLast()){
 
             Usuario u = new Usuario();
+
             u.setId(cursor.getInt(cursor.getColumnIndex("id")));
             u.setNombre(cursor.getString(cursor.getColumnIndex("nombre")));
             u.setEmail(cursor.getString(cursor.getColumnIndex("email")));

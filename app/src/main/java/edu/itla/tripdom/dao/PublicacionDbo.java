@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import java.io.Serializable;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -25,15 +26,17 @@ import edu.itla.tripdom.entity.Usuario;
  * Created by Tipo666 on 11/26/2017.
  */
 
-public class PublicacionDbo{
+public class PublicacionDbo {
 
 
     private DbConnection connection;
     private static final SimpleDateFormat DF = new SimpleDateFormat("dd-MM-yyyy");
 
-    public PublicacionDbo(Context context) {connection = new DbConnection(context); }
+    public PublicacionDbo(Context context) {
+        connection = new DbConnection(context);
+    }
 
-    public void crear(Publicacion pu){
+    public void crear(Publicacion pu) {
 
         //pu.setUsuario(UsuarioActual.getUsuario());
 
@@ -44,7 +47,7 @@ public class PublicacionDbo{
         cv.put("usuario_id", UsuarioActual.getUsuario().getId());
     }
 
-    public List<Publicacion> getPublication(){
+    public List<Publicacion> getPublication() {
 
         SQLiteDatabase db = connection.getReadableDatabase();
 
@@ -52,35 +55,33 @@ public class PublicacionDbo{
         cursor.moveToNext();
 
         List<Publicacion> publicacions = new ArrayList<>();
-            while(!cursor.isAfterLast()){
-                Publicacion p = new Publicacion();
-                Usuario u = new Usuario();
+        while (!cursor.isAfterLast()) {
+            Publicacion p = new Publicacion();
+            Usuario u = new Usuario();
 
-                try {
-                    p.setFechaPublicacion(DF.parse(cursor.getString(cursor.getColumnIndex("fechapublicacion"))));
-                }catch (Exception ex){
-                    p.setFechaPublicacion(new Date());
-                }
+            try {
+                p.setFechaPublicacion(DF.parse(cursor.getString(cursor.getColumnIndex("fechapublicacion"))));
+            } catch (ParseException ex) {
+                p.setFechaPublicacion(new Date());
+            }
 
-                try {
-                    p.setFechaViaje(DF.parse(cursor.getString(cursor.getColumnIndex("fechaviaje"))));
-                }catch (Exception ex){
-                    p.setFechaViaje(new Date());
-                }
+            try {
+                p.setFechaViaje(DF.parse(cursor.getString(cursor.getColumnIndex("fechaviaje"))));
+            } catch (Exception ex) {
+                p.setFechaViaje(new Date());
+            }
 
-                u.setId(cursor.getInt(cursor.getColumnIndex("usuario_id")));
-                u.setNombre("");
-                u.setEmail("");
+            u.setId(cursor.getInt(cursor.getColumnIndex("usuario_id")));
+            u.setNombre("nombre");
+            u.setEmail("email");
 
-                p.setUsuario(u);
+            p.setUsuario(u);
 
-                publicacions.add(p);
+            publicacions.add(p);
 
-                return publicacions;
-
+            cursor.moveToNext();
         }
 
+            return publicacions;
     }
-
-
 }
