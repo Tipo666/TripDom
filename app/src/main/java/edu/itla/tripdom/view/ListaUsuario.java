@@ -58,9 +58,5 @@ public class ListaUsuario extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-
-
     }
 }

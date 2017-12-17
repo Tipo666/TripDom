@@ -53,22 +53,7 @@ public class RegistroUsuario extends AppCompatActivity {
             editTextTelefono.setText(usuario.getTelefono());
         }
 
-        btnListar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                Intent visualizar = new Intent(RegistroUsuario.this, ListaUsuario.class);
-               // visualizar.putExtra("Nombre", editText.getText().toString());
-                startActivity(visualizar);
-
-                /*
-                List<Usuario> usuarios = usuarioDbo.buscar();
-
-                for (Usuario u: usuarios){
-                    Log.i("ListUsuarios", u.toString());
-                }*/
-            }
-        });
 
         btnRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,6 +75,23 @@ public class RegistroUsuario extends AppCompatActivity {
             }
         });
 
+        btnListar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent visualizar = new Intent(RegistroUsuario.this, ListaUsuario.class);
+                // visualizar.putExtra("Nombre", editText.getText().toString());
+                startActivity(visualizar);
+
+                /*
+                List<Usuario> usuarios = usuarioDbo.buscar();
+
+                for (Usuario u: usuarios){
+                    Log.i("ListUsuarios", u.toString());
+                }*/
+            }
+        });
+
         Button btnCambiar = findViewById(R.id.btnCambiar);
 
         btnCambiar.setOnClickListener(new View.OnClickListener() {
@@ -99,8 +101,6 @@ public class RegistroUsuario extends AppCompatActivity {
                 if (usuario != null && usuario.getId()>0) {
 
                     UsuarioActual.setUsuario(usuario);
-
-
                 }else{
                     Toast.makeText(RegistroUsuario.this, "Usuario no permitido o no exsite", Toast.LENGTH_LONG);
                 }
